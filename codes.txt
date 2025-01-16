@@ -1,0 +1,73 @@
+Hamming Code:
+
+Encoding Algorithm:
+Determine the number of parity bits needed to cover all data bits and parity positions.
+Assign each data bit to a position in the code word, leaving spaces for parity bits.
+Calculate the values of the parity bits based on the positions they cover and the data bits in those positions.
+Decoding Algorithm:
+Receive the codeword.
+Calculate the syndromes, which are used to identify the error bit position.
+If a syndrome is non-zero, correct the error bit. If there's no error, proceed with the received codeword.
+
+Reed-Solomon Code:
+
+Encoding Algorithm:
+Generate a polynomial from the input data.
+Encode the polynomial using the Reed-Solomon algorithm, which involves adding redundant symbols based on the degree of the polynomial and the desired level of error correction.
+Decoding Algorithm:
+Receive the encoded message.
+Use the syndrome calculation to identify errors.
+Apply the error correction algorithm to correct errors in the received data.
+
+BCH Code:
+
+Encoding Algorithm:
+Generate the generator polynomial based on the desired error correction capability.
+Encode the data using the generator polynomial.
+Decoding Algorithm:
+Receive the codeword.
+Calculate syndromes to detect errors.
+Use the error locator polynomial and the error evaluator polynomial to correct errors.
+
+Convolutional Code:
+
+Encoding Algorithm:
+Use shift registers and feedback connections to encode the input data into a stream of output bits.
+Decoding Algorithm:
+Implement the Viterbi algorithm to find the most likely sequence of transmitted bits given the received sequence.
+
+LDPC Code:
+
+Encoding Algorithm:
+Construct a sparse parity-check matrix.
+Use iterative encoding algorithms such as belief propagation to encode the input data.
+Decoding Algorithm:
+Use iterative decoding algorithms such as sum-product algorithm or message passing to decode the received codeword.
+
+Golay Code:
+
+Encoding Algorithm:
+The Golay code can be implemented using either the binary Golay code (Golay(23,12)) or the extended binary Golay code (Golay(24,12)). The encoding process typically involves matrix multiplication or lookup tables to generate the codewords.
+Decoding Algorithm:
+For the binary Golay code, the decoding process can be achieved using the Golay syndrome decoding algorithm, which involves calculating syndromes and correcting errors based on predefined error patterns.
+For the extended binary Golay code, a more complex decoding algorithm is required, often based on the binary Golay code decoding algorithm combined with additional error-correction capabilities.
+
+Turbo Code:
+
+Encoding Algorithm:
+Turbo codes are constructed using parallel concatenation of two or more convolutional codes (component codes) with an interleaver between them.
+The input data is encoded separately by each component code, and the outputs are interleaved to form the final codeword.
+Decoding Algorithm:
+Turbo decoding involves iterative decoding using the turbo decoding algorithm, such as the Log-MAP (Logarithmic Maximum A Posteriori) algorithm or the BCJR (Bahl–Cocke–Jelinek–Raviv) algorithm.
+Soft-input soft-output (SISO) decoding is performed iteratively between the component decoders, exchanging extrinsic information until convergence or a maximum number of iterations is reached.
+
+Cyclic Redundancy Check (CRC):
+
+Generation Algorithm:
+Choose a generator polynomial, typically represented as a binary number.
+Divide the input message (data) by the generator polynomial using polynomial division.
+Append the remainder (CRC) to the original message to form the codeword.
+Checking Algorithm:
+Receive the codeword.
+Perform the same division process using the generator polynomial.
+If the remainder is zero, the codeword is considered error-free. Otherwise, errors are detected.
